@@ -25,11 +25,15 @@ public class protocoloUrgencia implements IProtocoloUrgencia{
     }
 
     public Patient[] listaAtendimento(Patient[] pacientes){
+
+        MergeSort ms = new MergeSort;
         Patient[] lista = new Patient[pacientes.length];
 
         for(int i = 0; i < pacientes.length; i++)
             pacientes[i].urgencia = urgencia(pacientes.sintomas);
 
-        //usar o merge sort com idade como criterio de desempate
+        ms.mergeSort(pacientes, pacientes.length);
+
+        return pacientes;
     }
 }
