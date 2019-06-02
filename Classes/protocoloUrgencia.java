@@ -22,44 +22,39 @@ public interface IProtocoloUrgencia extends Grafico {
 public class protocoloUrgencia implements IProtocoloUrgencia{
     public int urgencia(String[] sintomas){
         int prioridade = 0;
+        //os sintomas que não estão sendo checados tem prioridade 0
         for (int i =0; i++; i<sintomas.length ){
             if (sintomas[i].equals("paralysis"){
                 if (prioridade < 1){
                     prioridade = 1;
                 }
             }
-            else if (sintomas[i].equals("yellow_tong")){
-                if (prioridade < ){
-                    prioridade =  ;
-                }
-            }
+
             else if (sintomas[i].equals("member_loss")){
-                if (prioridade < ){
-                    prioridade =  ;
+                if (prioridade < 3){
+                    prioridade = 3;
                 }
             }
             else if (sintomas[i].equals("chest_pain")){
-                if (prioridade < ){
-                    prioridade =  ;
-                }
-            }
-            else if (sintomas[i].equals("trembling_finger")){
-                if (prioridade < ){
-                    prioridade =  ;
-                }
-            }
-            else if (sintomas[i].equals("severe_anger")){
-                if (prioridade < ){
-                    prioridade =  ;
-                }
-            }
-            else if (sintomas[i].equals("history_bacteria")){
-                if (prioridade < ){
-                    prioridade =  ;
+                if (prioridade < 3){
+                    prioridade = 3;
                 }
             }
 
+
+            else if (sintomas[i].equals("history_bacteria")){
+                if (prioridade < 1){
+                    prioridade = 1;
+                }
+            }
+
+            else if (sintomas[i].equals("fever")){
+                if (prioridade < 2){
+                    prioridade = 2;
+                }
+            }
         }
+        return prioridade;
 
     }
 
