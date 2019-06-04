@@ -1,4 +1,4 @@
-/*Classe: /Classes/grafico.java
+/*Classe: /Classes/Grafico.java
 Autores:
 Gabriel de Souza Mafra - RA 197272
 Manuela Rafael Onofre de Souza - RA 202534
