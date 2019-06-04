@@ -24,23 +24,23 @@ public class MergeSort{
 
         int i = 0, j = 0, k = 0;
         while (i < left && j < right) {
-            if (l[i].urgencia < r[j].urgencia) {
+            if (l[i].getUrgencia() > r[j].getUrgencia()) {
                 a[k++] = l[i++];
             }
-            else if(l[i].urgencia > r[j].urgencia){
+            else if(l[i].getUrgencia() < r[j].getUrgencia()){
                 a[k++] = r[j++];
             }
             else{
-                if(l[i].idade == 3)
+                if(l[i].getIdade() == 3)
                     a[k++] = l[i++];
 
-                else if(r[j].idade == 3)
+                else if(r[j].getIdade() == 3)
                     a[k++] = r[j++];
 
-                else if(l[i].idade == 1)
+                else if(l[i].getIdade() == 1)
                     a[k++] = l[i++];
 
-                else if(r[j].idade == 1)
+                else if(r[j].getIdade() == 1)
                     a[k++] = r[j++];
 
                 else

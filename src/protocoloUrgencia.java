@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*Classe: /Classes/protocoloUrgencia.java
 
 Autores:
@@ -14,42 +16,34 @@ Esse componente recebe o vetor de strings que representa os sintomas do Paciente
 
 Interface:
 */
-public interface IProtocoloUrgencia extends Grafico {
+interface IProtocoloUrgencia{
     public int urgencia(String[] sintomas); //classifica as doenças em prioridade
-    public Patient[] listaAtendimento(Patient[] pacientes) //cria uma lista de atendimento de acordo com a prioridade
+    public Patient[] listaAtendimento(Patient[] pacientes); //cria uma lista de atendimento de acordo com a prioridade
 }
 
 public class protocoloUrgencia implements IProtocoloUrgencia{
     public int urgencia(String[] sintomas){
         int prioridade = 0;
         //os sintomas que não estão sendo checados tem prioridade 0
-        for (int i =0; i++; i<sintomas.length ){
-            if (sintomas[i].equals("paralysis"){
-                if (prioridade < 1){
+        for (int i = 0; i<sintomas.length; i++) {
+            if (sintomas[i].equals("Paralisia")) {
+                if (prioridade < 1) {
                     prioridade = 1;
                 }
-            }
-
-            else if (sintomas[i].equals("member_loss")){
-                if (prioridade < 3){
+            } else if (sintomas[i].equals("Perda de Membro")) {
+                if (prioridade < 3) {
                     prioridade = 3;
                 }
-            }
-            else if (sintomas[i].equals("chest_pain")){
-                if (prioridade < 3){
+            } else if (sintomas[i].equals("Dor no Peito")) {
+                if (prioridade < 3) {
                     prioridade = 3;
                 }
-            }
-
-
-            else if (sintomas[i].equals("history_bacteria")){
-                if (prioridade < 1){
+            } else if (sintomas[i].equals("Pele Azul")) {
+                if (prioridade < 1) {
                     prioridade = 1;
                 }
-            }
-
-            else if (sintomas[i].equals("fever")){
-                if (prioridade < 2){
+            } else if (sintomas[i].equals("Febre")) {
+                if (prioridade < 2) {
                     prioridade = 2;
                 }
             }
@@ -58,13 +52,28 @@ public class protocoloUrgencia implements IProtocoloUrgencia{
 
     }
 
+    public String[] getListaSintomas(Patient paciente){
+        ArrayList<String> lista = new ArrayList<String>();
+        String[] retorno = new String[0];
+
+        int i = 0;
+        for(String gab : paciente.getGabarito()){
+            if(gab.equals("1"))
+                lista.add(paciente.getAttributes()[i]);
+            i++;
+        }
+
+        retorno = lista.toArray(retorno);
+        return retorno;
+    }
+
     public Patient[] listaAtendimento(Patient[] pacientes){
 
-        MergeSort ms = new MergeSort;
+        MergeSort ms = new MergeSort();
         Patient[] lista = new Patient[pacientes.length];
 
         for(int i = 0; i < pacientes.length; i++)
-            pacientes[i].urgencia = urgencia(pacientes.sintomas);
+            pacientes[i].setUrgencia(urgencia(getListaSintomas(pacientes[i])));
 
         ms.mergeSort(pacientes, pacientes.length);
 

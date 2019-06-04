@@ -128,11 +128,29 @@ class Patient implements IPatient{
     private String[]   attributes;
     private ITableProducer ds;
     private int doenca;
+    private int idade;
+    private int urgencia;
     private Random rand;
 
     //funcao nova
 
     //-------------------------------------------------------------------------------------------------//
+    public int getIdade(){
+        return idade;
+    }
+
+    public void setUrgencia(int urgencia){
+        this.urgencia = urgencia;
+    }
+
+    public int getUrgencia() {
+        return urgencia;
+    }
+
+    public int getDoenca() {
+        return doenca;
+    }
+
     public String[] getGabarito() {
         return gabarito;
     }
@@ -142,11 +160,23 @@ class Patient implements IPatient{
     }
     //-------------------------------------------------------------------------------------------------//
     public Patient(ITableProducer producer){
+        idade = 1;
+        urgencia = -1;
         connect(producer);
         rand = new Random();
         attributes = ds.requestAttributes();
         doenca = rand.nextInt(producer.requestInstances().length);
         gabarito = ds.requestInstances()[doenca];
+    }
+
+    public void crescer(){
+        if(idade < 3)
+            idade++;
+    }
+
+    public void crescer(int n){
+        for(int i = 0; i < n; i++)
+            crescer();
     }
 
     public String ask(String question){
