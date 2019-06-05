@@ -1,0 +1,4 @@
+Daniel,20,2
+1,Infecção Viral
+1,Zulombriga
+2,Zulombriga
