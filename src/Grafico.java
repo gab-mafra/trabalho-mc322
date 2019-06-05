@@ -318,7 +318,7 @@ public class Grafico extends JFrame{
            barra.setValue(doencas[j].getFrequencia(), doencas[j].getNome(), "");
         }
        //tem que mudar os valores de A,B e C pra deixar melhor o grafico depois
-       JFreeChart grafico = ChartFactory.createBarChart("A", "B", "C", barra, PlotOrientation.VERTICAL, true, true, false);
+       JFreeChart grafico = ChartFactory.createBarChart("Frequência das doenças", "Doenças", "Número de pacientes", barra, PlotOrientation.VERTICAL, true, true, false);
        ChartPanel painel = new ChartPanel(grafico);
        add(painel);
     }
@@ -330,7 +330,7 @@ public class Grafico extends JFrame{
             barraSintoma.setValue(sintomas[j].getFrequencia(), sintomas[j].getNome(), "");
         }
         //tem que mudar os valores de A,B e C pra deixar melhor o grafico depois
-        JFreeChart grafico = ChartFactory.createBarChart("A", "B", "C", barraSintoma, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart grafico = ChartFactory.createBarChart("Frequência de sintomas", "Sintomas", "Número de pacientes", barraSintoma, PlotOrientation.VERTICAL, true, true, false);
         ChartPanel painelSintoma = new ChartPanel(grafico);
         add(painelSintoma);
     };
