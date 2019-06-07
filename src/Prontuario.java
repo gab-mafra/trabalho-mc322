@@ -33,7 +33,7 @@ public class Prontuario {
         }
     }
 
-    public void serializar(Zumbi z, String doenca) {
+    public void serializar(Patient z, String doenca) {
         //Bloco try ira verificar se ja existe uma ficha para o paciente
         //Caso sim, ele ira adicionar a nova doença
         try {
@@ -76,7 +76,7 @@ public class Prontuario {
         }
     }
 
-    public void maisRecorrente(Zumbi z) {
+    public void maisRecorrente(Patient z) {
         //Bloco try tentara ler o arquivo do paciente, caso ele exista
         try {
             FileReader arquivo = new FileReader(z.getNome() + "_" + z.getCPF() + ".txt");
@@ -115,11 +115,11 @@ public class Prontuario {
         }
     }
 
-    public void print(Zumbi zumbi) {
+    public void print(Patient z) {
         try {
             // Abre o arquivo txt
-            String nomeZumbi = zumbi.getNome();
-            FileReader arquivo = new FileReader(nomeZumbi + "_" + zumbi.getCPF() + ".txt");
+            String nomeZumbi = z.getNome();
+            FileReader arquivo = new FileReader(nomeZumbi + "_" + z.getCPF() + ".txt");
             BufferedReader formato = new BufferedReader(arquivo);
 
             // Lista com as doencas que o paciente ja contrariu
@@ -145,8 +145,8 @@ public class Prontuario {
             }
             System.out.println("||Ficha medica||");
             System.out.println("#Nome: " + nomeZumbi);
-            System.out.println("#Idade: " + zumbi.getIdade());
-            System.out.println("#CPF: " + zumbi.getCPF());
+            System.out.println("#Idade: " + z.getIdade());
+            System.out.println("#CPF: " + z.getCPF());
             System.out.println("Doenças contraidas pelo paciente: ");
             for (Doenca d : doencas) {
                 System.out.println(d.toString());
@@ -154,9 +154,9 @@ public class Prontuario {
             arquivo.close();
         } catch (IOException erro) {
             System.err.println("||Erro||\n" +
-                    "#Nome: " + zumbi.getNome() + ";\n" +
-                    "#Idade :" + zumbi.getIdade() + "\n" +
-                    "#CPF: " + zumbi.getCPF() + ";\n" +
+                    "#Nome: " + z.getNome() + ";\n" +
+                    "#Idade :" + z.getIdade() + "\n" +
+                    "#CPF: " + z.getCPF() + ";\n" +
                     "O paciente em questao ainda nao possui uma ficha medica.");
         }
     }

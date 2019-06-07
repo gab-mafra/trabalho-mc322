@@ -131,12 +131,30 @@ class Patient implements IPatient{
     private int idade;
     private int urgencia;
     private Random rand;
+    private int CPF;
+    private String nome;
 
     //funcao nova
 
     //-------------------------------------------------------------------------------------------------//
     public int getIdade(){
         return idade;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCPF(int CPF) {
+        this.CPF = CPF;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getCPF() {
+        return CPF;
     }
 
     public void setUrgencia(int urgencia){

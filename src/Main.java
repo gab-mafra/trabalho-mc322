@@ -35,6 +35,12 @@ public class Main {
             i++;
         }
 
+        Patient a = new Patient(dataset);
+        a.setNome("asdrubal");
+        a.setCPF(111000);
+        Prontuario prontuario = new Prontuario();
+        prontuario.serializar(a, "virose");
+
         Grafico grafico1 =  new Grafico(vetorPacientes);
         Grafico grafico2 =  new Grafico(vetorPacientes);
         //Controi o grafico que vc quiser
