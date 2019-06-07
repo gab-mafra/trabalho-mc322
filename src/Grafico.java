@@ -131,12 +131,30 @@ class Patient implements IPatient{
     private int idade;
     private int urgencia;
     private Random rand;
+    private int CPF;
+    private String nome;
 
     //funcao nova
 
     //-------------------------------------------------------------------------------------------------//
     public int getIdade(){
         return idade;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCPF(int CPF) {
+        this.CPF = CPF;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getCPF() {
+        return CPF;
     }
 
     public void setUrgencia(int urgencia){
@@ -311,7 +329,7 @@ public class Grafico extends JFrame{
     }
 
     //cria um grafico com as frequencias das doenças
-    //lembrar de por Patient[] pacientes como parametro depois
+    //lembrar de por Patient[] pacientes como parametro depoisbi
     private void criarGraficoDoencas(Doencas[] doencas){
        DefaultCategoryDataset barra = new DefaultCategoryDataset();
        for (int j = 0; j < doencas.length; j++){
