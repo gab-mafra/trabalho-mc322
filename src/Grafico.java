@@ -311,7 +311,7 @@ public class Grafico extends JFrame{
     }
 
     //cria um grafico com as frequencias das doenças
-    //lembrar de por Patient[] pacientes como parametro depois
+    //lembrar de por Patient[] pacientes como parametro depoisbi
     private void criarGraficoDoencas(Doencas[] doencas){
        DefaultCategoryDataset barra = new DefaultCategoryDataset();
        for (int j = 0; j < doencas.length; j++){
