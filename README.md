@@ -25,7 +25,7 @@ de tal forma que o médico, conhecendo as possíveis doenças e seus possíveis 
 
 Caminho no arquivo JAR - "Drauziumbi.jar/drauziumbi/Grafico.java"
 
-Este componente cria dois gráficos a sua escolha, um de frequência de sintomas num dado conjunto de pacientes, o outro de frequência de doenças num dado conjunto de pacientes, utilizando da biblioteca do Jfree
+Este componente cria dois gráficos a sua escolha, um de frequência de sintomas num dado conjunto de pacientes, o outro de frequência de doenças num dado conjunto de pacientes, utilizando da biblioteca do Jfree, e cria arquivos PNG para cada grafico.
 
 *Métodos:*
 
@@ -34,20 +34,20 @@ Este componente cria dois gráficos a sua escolha, um de frequência de sintomas
 
 *Observações:*
 
-Esse componente é 100% generalizado, você pode adicionar qualquer sintoma e doença que ele mostrará todas elas no gráfico
-Esse componente recebe um vetor da classe "Patient", caso seu paciente não seja dessa classe, há duas opções, que seu paciente herde do nosso "Patient", caso eles sejam próximos ou que você crie um vetor com o nosso próprio Patient, que está no arquivo JAR
+Esse componente é 100% generalizado, você pode adicionar qualquer sintoma e doença que ele mostrará todas elas no gráfico.
+Esse componente recebe um vetor da classe "Patient", caso seu paciente não seja dessa classe, há duas opções, que seu paciente herde do nosso "Patient", caso eles sejam próximos ou que você crie um vetor com o nosso próprio Patient, que está no arquivo JAR.
 
 *FAQ*
 
 * Precisamos adicionar alguma biblioteca adicional?
 
-    Não, o pacote do jfree ja está incluso no nosso arquivo JAR, basta incluí-lo no seu projeto
+    Não, o pacote do jfree ja está incluso no nosso arquivo JAR, basta incluí-lo no seu projeto.
 
 ### Protocolo de Urgência
 
 Caminho no arquivo JAR - "Drauziumbi.jar/draziumbi/protocoloUrgencia.java" & "Drauziumbi.jar/draziumbi/MergeSort.java"
 
-Este componente analisa os sintomas dos pacientes e os organiza para um atendimento utilizando os padrões de protocolo de urgência usados nos pronoto socorros do Brasil, utilizando um Merge Sort adaptado para o problema para a ordenação
+Este componente analisa os sintomas dos pacientes e os organiza para um atendimento utilizando os padrões de protocolo de urgência usados nos pronoto socorros do Brasil, utilizando um Merge Sort adaptado para o problema para a ordenação.
 
 *Métodos:*
 
@@ -57,21 +57,21 @@ Este componente analisa os sintomas dos pacientes e os organiza para um atendime
 
 *Observações:*
 
-Esse componente depende muito de cada sintoma no data set utilizado, portanto caso queira adicionar mais sintomas, basta modificar o método 'urgencia' adicionando o nome do sintoma e retornando a urgência associada. Além disso são necessários duas novas variaveis a classe Patient: idade e urgencia, para armazenar as informações para a ordenação
+Esse componente depende muito de cada sintoma no data set utilizado, portanto caso queira adicionar mais sintomas, basta modificar o método 'urgencia' adicionando o nome do sintoma e retornando a urgência associada. Além disso são necessários duas novas variaveis a classe Patient: idade e urgencia, para armazenar as informações para a ordenação.
 
 *FAQ*
 
 * Por quê Merge Sort?
 
-    Como estamos ordenandos objetos complexos (e não apenas valores inteiros) precisamos de um sort estável, e de todos os sorts estáveis esse seria o mais eficiente
+    Como estamos ordenandos objetos complexos (e não apenas valores inteiros) precisamos de um sort estável, e de todos os sorts estáveis esse seria o mais eficiente.
 
 * Precisamos de instalar algum pacote extra?
 
-    Não, tanto a interface desse componente, quanto as classes protcoloUrgencia e o MergeSort estão no nosso pacote
+    Não, tanto a interface desse componente, quanto as classes protcoloUrgencia e o MergeSort estão no nosso pacote.
 
 ### Prontuário
 
-Este componente serializa as informações de um paciente, incluindo Nome, CPF e o histórico de doenças, em ordem e com um identificador de frquência de cada doença, podendo facilmente identificar qual a doença mais recorrente do paciente
+Este componente serializa as informações de um paciente, incluindo Nome, CPF e o histórico de doenças, em ordem e com um identificador de frquência de cada doença, podendo facilmente identificar qual a doença mais recorrente do paciente.
 
 *Métodos:*
 
@@ -81,29 +81,29 @@ Este componente serializa as informações de um paciente, incluindo Nome, CPF e
 
 *Observações:*
 
-Esse componente possui duas novas variaveis na classe Patient: nome e cpf, para a identificação do prontuário
-O paciente, quando criado, tem os campos de nome e cpf vazios, lembre de utilizar os métodos setCPF e setNome para colocar os mesmos
+Esse componente possui duas novas variaveis na classe Patient: nome e cpf, para a identificação do prontuário.
+O paciente, quando criado, tem os campos de nome e cpf vazios, lembre de utilizar os métodos setCPF e setNome para colocar os mesmos.
 
 *FAQ*
 
 * Precisamos de alguma biblioteca adicional?
 
-    Não, tudo esta incluso no arquivo JAR
+    Não, tudo esta incluso no arquivo JAR.
 
 * Preciso criar a pasta "prontuarios"?
 
-    Sim, esta pasta precisa estar no diretório do projeto
+    Sim, esta pasta precisa estar no diretório do projeto.
 
 ## Como importar nossos componentes?
 
 ### Tutorial do eclipse
 
-Com o arquivo JAR ("Drauviumbi.jar") baixado, clique com o botão direito no projeto > propriedades > Java Bulid Path > Libraries > Classpath > Add external JARs > escolha o arquivo > Apply e Ok
+Com o arquivo JAR ("Drauviumbi.jar") baixado, clique com o botão direito no projeto > propriedades > Java Bulid Path > Libraries > Classpath > Add external JARs > escolha o arquivo > Apply e Ok.
 
 No seu codigo, utilize 'import drauziumbi.*'
 
 ### Tutorial do IntelliJ
 
-Ctrl + Shift + Alt + S (Command + ; no Mac) > Libraries > + no canto superior esquerdo > Java > escolha o arquivo > Apply e Ok
+Ctrl + Shift + Alt + S (Command + ; no Mac) > Libraries > + no canto superior esquerdo > Java > escolha o arquivo > Apply e Ok.
 
 No seu codigo, utilize 'import drauziumbi.*'
