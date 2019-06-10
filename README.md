@@ -99,9 +99,11 @@ O paciente, quando criado, tem os campos de nome e cpf vazios, lembre de utiliza
 ### Tutorial do eclipse
 
 Com o arquivo JAR ("Drauviumbi.jar") baixado, clique com o botão direito no projeto > propriedades > Java Bulid Path > Libraries > Classpath > Add external JARs > escolha o arquivo > Apply e Ok
+
 No seu codigo, utilize 'import drauziumbi.*'
 
 ### Tutorial do IntelliJ
 
 Ctrl + Shift + Alt + S (Command + ; no Mac) > Libraries > + no canto superior esquerdo > Java > escolha o arquivo > Apply e Ok
+
 No seu codigo, utilize 'import drauziumbi.*'
