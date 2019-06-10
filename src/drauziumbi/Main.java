@@ -10,7 +10,7 @@ public class Main {
 
     private static Patient[] vetorPacientes = new Patient[0];
 
-    public static void gerarPacientes(int numeroPacientes, int numeroZumbis, ITableProducer dataset){
+    private static Patient[] gerarPacientes(int numeroPacientes, int numeroZumbis, ITableProducer dataset){
         Random rand = new Random();
 
         //Setando os zumbis modelos
@@ -61,6 +61,8 @@ public class Main {
             myList.add(pacienteAdicionado);
             vetorPacientes = myList.toArray(vetorPacientes);
         }
+
+        return zumbis;
     }
 
     public static void main(String[] args) {
@@ -68,7 +70,7 @@ public class Main {
         IDataSet dataset = new DataSetComponent();
         dataset.setDataSource("roteiros-auxiliares/db/zombie-health-new-cases500.csv");
 
-        gerarPacientes(50, 10, dataset);
+        Patient[] zumbis = gerarPacientes(50, 10, dataset);
 
         protocoloUrgencia urg = Factory.criarUrgencia();
 
@@ -88,7 +90,6 @@ public class Main {
 
         //atendimento e serializacao dos pacientes
         String resposta;
-        int i = 0;
         for (Patient a: vetorPacientes){
             doctor.connect(a);
             resposta = doctor.startInterview();
@@ -96,14 +97,17 @@ public class Main {
         }
 
         //simula um atendimento com o texto
+        //seleciona um paciente para a simulacao
         Random rand = new Random();
         Patient a = vetorPacientes[rand.nextInt(vetorPacientes.length)];
 
+        //organiza os sintomas para uma string para o atendimento
         String sintomas = new String("");
         for(String sintoma: urg.getListaSintomas(a)){
             sintomas += sintoma + ", ";
         }
 
+        //simula o atendimento de fato
         IAnimationC animacao = new AnimationC();
         animacao.setDocName("DrauZiumbi Varella");
         animacao.setWindowName("Atendimento");
@@ -120,6 +124,11 @@ public class Main {
         //Controi o grafico que vc quiser
         grafico1.contrutorGraficoDoenca();
         grafico2.contrutorGraficoSintoma();
+
+        for(Patient paciente: zumbis){
+            System.out.println("");
+            prontuario.maisRecorrente(paciente);
+        }
 
     }
 

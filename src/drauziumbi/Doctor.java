@@ -1,7 +1,5 @@
 package drauziumbi;
 
-import java.util.Random;
-
 interface IEnquirer {
     public String startInterview();
 }
@@ -11,7 +9,6 @@ interface IDoctor extends IEnquirer, IResponderReceptacle, ITableProducerRecepta
 }
 
 public class Doctor implements IDoctor {
-    private int patientN = 0;
 
     private ITableProducer producer;
     private IResponder responder;
@@ -25,10 +22,10 @@ public class Doctor implements IDoctor {
     }
 
     public String startInterview() {
-        String attributes[] = producer.requestAttributes();
-        String instances[][] = producer.requestInstances();
+        String[] attributes = producer.requestAttributes();
+        String[][] instances = producer.requestInstances();
 
-        String sintomas[] = new String[attributes.length];
+        String[] sintomas = new String[attributes.length];
 
         for (int a = 0; a < attributes.length - 1; a++){
             sintomas[a] = responder.ask(attributes[a]);
