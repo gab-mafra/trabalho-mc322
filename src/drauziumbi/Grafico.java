@@ -14,11 +14,9 @@ Interface:
 
 
 //importando a biblioteca de numeros aleatorios
+import java.io.*;
 import java.util.Random;
 //importando as bibliotecas usadas pelo DataSet
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 //------------------------------------------------------------------------------------------------//
 import java.util.ArrayList;
@@ -30,6 +28,7 @@ import javax.swing.JFrame;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -320,11 +319,13 @@ public class Grafico extends JFrame{
 
     public void contrutorGraficoDoenca(){
         criarGraficoDoencas(vetorDoencas);
+        criarGraficoDoencasPNG(vetorDoencas);
         setVisible(true);
     }
 
     public void contrutorGraficoSintoma(){
         criarGraficoSintomas(vetorSintomas);
+        criarGraficoSintomasPNG(vetorSintomas);
         setVisible(true);
     }
 
@@ -352,5 +353,46 @@ public class Grafico extends JFrame{
         ChartPanel painelSintoma = new ChartPanel(grafico);
         add(painelSintoma);
     };
+
+    public void criarGraficoDoencasPNG(Doencas[] doencas){
+        DefaultCategoryDataset barra = new DefaultCategoryDataset();
+        for (int j = 0; j < doencas.length; j++){
+            barra.setValue(doencas[j].getFrequencia(), doencas[j].getNome(), "");
+        }
+        //tem que mudar os valores de A,B e C pra deixar melhor o grafico depois
+        JFreeChart grafico = ChartFactory.createBarChart("Frequência das doenças", "Doenças", "Número de pacientes", barra, PlotOrientation.VERTICAL, true, true, false);
+        ChartPanel painel = new ChartPanel(grafico);
+        try {
+            OutputStream out = new FileOutputStream("painel");
+            ChartUtilities.writeChartAsPNG(out,
+                    grafico,
+                    1300,
+                    900);
+
+        } catch (IOException ex) {
+            System.out.println("error");
+        }
+    }
+
+    public void criarGraficoSintomasPNG(Sintomas[] sintomas){
+        DefaultCategoryDataset barraSintoma = new DefaultCategoryDataset();
+        for (int j = 0; j < sintomas.length -1; j++){
+            barraSintoma.setValue(sintomas[j].getFrequencia(), sintomas[j].getNome(), "");
+        }
+        //tem que mudar os valores de A,B e C pra deixar melhor o grafico depois
+        JFreeChart grafico = ChartFactory.createBarChart("Frequência de sintomas", "Sintomas", "Número de pacientes", barraSintoma, PlotOrientation.VERTICAL, true, true, false);
+        ChartPanel painelSintoma = new ChartPanel(grafico);
+        try {
+            OutputStream out = new FileOutputStream("painelSintoma");
+            ChartUtilities.writeChartAsPNG(out,
+                    grafico,
+                    1300,
+                    900);
+
+        } catch (IOException ex) {
+            System.out.println("error");
+        }
+
+    }
 }
 //-------------------------------------------------------------------------------------------------//

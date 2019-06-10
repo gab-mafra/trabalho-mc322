@@ -26,6 +26,7 @@ de tal forma que o médico, conhecendo as possíveis doenças e seus possíveis 
 Caminho no arquivo JAR - "Drauziumbi.jar/drauziumbi/Grafico.java"
 
 Este componente cria dois gráficos a sua escolha, um de frequência de sintomas num dado conjunto de pacientes, o outro de frequência de doenças num dado conjunto de pacientes, utilizando da biblioteca do Jfree
+Este componente também gera dois PNGs com os gráficos parta você usar como achar melhor
 
 *Métodos:*
 
