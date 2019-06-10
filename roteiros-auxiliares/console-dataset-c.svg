@@ -618,7 +618,7 @@
      xml:space="preserve"
      id="text173"
      style="font-style:normal;font-weight:normal;font-size:12px;font-family:Dialog;color-interpolation:auto;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.10000002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto"
-     transform="translate(-606.95225,112.12972)">DataSetComponent</text>
+     transform="translate(-606.95225,112.12972)">drauzio.DataSetComponent</text>
   <rect
      x="610"
      y="30"
@@ -646,7 +646,7 @@
      xml:space="preserve"
      id="text185"
      style="font-style:normal;font-weight:normal;font-size:12px;font-family:Dialog;color-interpolation:auto;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.10000002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:optimizeLegibility"
-     transform="translate(-606.95225,112.12972)">ITableProducer</text>
+     transform="translate(-606.95225,112.12972)">drauzio.ITableProducer</text>
   <line
      clip-path="url(#clipPath34)"
      x1="760"

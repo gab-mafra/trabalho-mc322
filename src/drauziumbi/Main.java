@@ -25,7 +25,7 @@ public class Main {
 
         gerarPacientes(1000, dataset);
 
-        protocoloUrgencia urg = new protocoloUrgencia();
+        protocoloUrgencia urg = Factory.criarUrgencia();
         vetorPacientes = urg.listaAtendimento(vetorPacientes);
 
         int i = 0;
@@ -39,11 +39,11 @@ public class Main {
         Patient a = new Patient(dataset);
         a.setNome("asdrubal");
         a.setCPF(111000);
-        Prontuario prontuario = new Prontuario();
+        Prontuario prontuario = Factory.criairProntuario();
         prontuario.serializar(a, "virose");
 
-        Grafico grafico1 =  new Grafico(vetorPacientes);
-        Grafico grafico2 =  new Grafico(vetorPacientes);
+        Grafico grafico1 =  Factory.criarGrafico(vetorPacientes);
+        Grafico grafico2 =  Factory.criarGrafico(vetorPacientes);
         //Controi o grafico que vc quiser
         grafico1.contrutorGraficoDoenca();
         grafico2.contrutorGraficoSintoma();

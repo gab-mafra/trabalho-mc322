@@ -1,18 +1,18 @@
 package drauziumbi;
 public class Factory {
-    public protocoloUrgencia criarUrgencia(){
+    public static protocoloUrgencia criarUrgencia(){
         return new protocoloUrgencia();
     }
 
-    public Grafico criarGrafico(Patient[] pacientes){
+    public static Grafico criarGrafico(Patient[] pacientes){
         return new Grafico(pacientes);
     }
 
-    public Prontuario criairProntuario(){
+    public static Prontuario criairProntuario(){
         return new Prontuario();
     }
 
-    public MergeSort criarMergeSort(){
+    public static MergeSort criarMergeSort(){
         return new MergeSort();
     }
 

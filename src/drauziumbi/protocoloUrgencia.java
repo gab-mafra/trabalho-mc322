@@ -13,9 +13,21 @@ Daniel Cardoso Custodio de Oliveira - RA 169400
 
 Objetivo:
 
-Esse componente recebe o vetor de strings que representa os sintomas do Paciente e retorna o nível de urgência de seu atendimento, variando entre "máxima", "alta", "média" ou "baixa", priorizando zumbis idosos e crianças, de forma similar aos pronto-socorros do Brasil.
+Esse componente recebe o vetor de strings que representa os sintomas do Paciente
+e retorna o nível de urgência de seu atendimento, variando entre "máxima", "alta", "média" ou "baixa",
+priorizando zumbis idosos e crianças, de forma similar aos pronto-socorros do Brasil.
 
-Interface:
+Metodos:
+
+    - urgencia: classifica a urgencia de atendimento do paciente
+        - retorno: inteiro que representa a urgencia do paciente
+        - parametros: vetor de strings com o nome de cada sintoma do paciente
+    - getListaSintomas: gera um vetor com o nome dos sintomas do paciente
+        - retorno: vetor de strings que contem o nome dos sintomas do paciente
+        - parametros: o paciente que sera a fonte do vetor
+    - listaAtendimento: gera uma lista de atendimento ordenada em urgencia
+        - retorno: vetor de pacientes ordenado em urgencia (desempate na idade, com idosos e criancas como prioridade nessa ordem)
+        - parametros: vetor de pacientes a ser ordenado
 */
 interface IProtocoloUrgencia{
     public int urgencia(String[] sintomas); //classifica as doenças em prioridade
@@ -76,7 +88,7 @@ public class protocoloUrgencia implements IProtocoloUrgencia{
         for(int i = 0; i < pacientes.length; i++)
             pacientes[i].setUrgencia(urgencia(getListaSintomas(pacientes[i])));
 
-        ms.mergeSort(pacientes, pacientes.length);
+        MergeSort.mergeSort(pacientes, pacientes.length);
 
         return pacientes;
     }
