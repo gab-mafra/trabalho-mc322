@@ -29,8 +29,10 @@ Este componente cria dois gráficos a sua escolha, um de frequência de sintomas
 
 *Métodos:*
 
-* *construtorGraficoDoencas* - constrói um grafico de doenças e o torna visível
-* *construtorGraficoSintomas* - constrói um gráfico de sintomas e o torna visível
+Nome | Função
+---- | ------
+ `construtorGraficoDoencas` | constrói um grafico de doenças e o torna visível
+ `construtorGraficoSintomas` | constrói um gráfico de sintomas e o torna visível
 
 *Observações:*
 
@@ -51,9 +53,11 @@ Este componente analisa os sintomas dos pacientes e os organiza para um atendime
 
 *Métodos:*
 
-* *urgencia* - recebe a lista de sintomas do paciente e retorna sua urgência (0 - urgência baixa, 1 - urgência média, 2 - urgência alta, 3 - urgência máxima)
-* *getListaSintomas* - a partir do vetor de sintomas com trues e falses de um paciente esse método retorna um vetor de strings com o nome de cada sintoma
-* *listaAtndimento* - utilizando do Merge Sort, esse método recebe um vetor de pacientes e retorna um vetor ordenado por urgencia decressiva, com idade sendo o critério de desempate (3 - idoso, 1 - criança, 2 - adulto), se o empate persistir, é levado em conta quão paciente chegou primiro ao pronto socorro (a ordem em que eles se encontram no vetor original)
+Nome | Função
+---- | ------
+`urgencia` | recebe a lista de sintomas do paciente e retorna sua urgência (0 - urgência baixa, 1 - urgência média, 2 - urgência alta, 3 - urgência máxima)
+`getListaSintomas` | a partir do vetor de sintomas com trues e falses de um paciente esse método retorna um vetor de strings com o nome de cada sintoma
+`listaAtndimento` | utilizando do Merge Sort, esse método recebe um vetor de pacientes e retorna um vetor ordenado por urgencia decressiva, com idade sendo o critério de desempate (3 - idoso, 1 - criança, 2 - adulto), se o empate persistir, é levado em conta quão paciente chegou primiro ao pronto socorro (a ordem em que eles se encontram no vetor original)
 
 *Observações:*
 
@@ -75,9 +79,11 @@ Este componente serializa as informações de um paciente, incluindo Nome, CPF e
 
 *Métodos:*
 
-* *serializar* - esse método serializa as informações do paciente criando seu prontuário médico com o nome "<nome>_<CPF>.txt" em uma pasta chamada "prontuarios"
-* *maisRecorrente* - retorna qual a doeça mais recorrente no prontuário de um paciente
-* *print* - imprime no terminal o prontuário do paciente
+Nome | Função
+---- | ------
+`serializar` | esse método serializa as informações do paciente criando seu prontuário médico com o nome "<nome>_<CPF>.txt" em uma pasta chamada "prontuarios"
+`maisRecorrente` | retorna qual a doeça mais recorrente no prontuário de um paciente
+`print` | imprime no terminal o prontuário do paciente
 
 *Observações:*
 
