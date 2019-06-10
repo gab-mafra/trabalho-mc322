@@ -168,6 +168,10 @@ class Patient implements IPatient{
         return doenca;
     }
 
+    public void setDoenca(int doenca) {
+        this.doenca = doenca;
+    }
+
     public String[] getGabarito() {
         return gabarito;
     }

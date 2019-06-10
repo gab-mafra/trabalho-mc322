@@ -12,8 +12,4 @@ public class Factory {
         return new Prontuario();
     }
 
-    public static MergeSort criarMergeSort(){
-        return new MergeSort();
-    }
-
 }

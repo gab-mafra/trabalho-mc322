@@ -13,7 +13,18 @@ public class Main {
     public static void gerarPacientes(int numeroPacientes, int numeroZumbis, ITableProducer dataset){
         Random rand = new Random();
 
+        //Setando os zumbis modelos
         Patient[] zumbis = new Patient[numeroZumbis];
+        zumbis[0] = new Patient(dataset);
+        zumbis[1] = new Patient(dataset);
+        zumbis[2] = new Patient(dataset);
+        zumbis[3] = new Patient(dataset);
+        zumbis[4] = new Patient(dataset);
+        zumbis[5] = new Patient(dataset);
+        zumbis[6] = new Patient(dataset);
+        zumbis[7] = new Patient(dataset);
+        zumbis[8] = new Patient(dataset);
+        zumbis[9] = new Patient(dataset);
         zumbis[0].setNome("Kina");
         zumbis[1].setNome("Genial");
         zumbis[2].setNome("Manu");
@@ -35,63 +46,75 @@ public class Main {
         zumbis[8].setCPF(7832);
         zumbis[9].setCPF(333);
 
+        //crescendo eles aleatoriamente
+        for(Patient pacienteAdicionado: zumbis)
+            pacienteAdicionado.crescer(rand.nextInt(3));
 
+        //criando o vetor com varios pacientes
         for (int k = 0; k < numeroPacientes; k++){
             ArrayList<Patient> myList = new ArrayList<>(Arrays.asList(vetorPacientes));
-            Patient pacienteAdicionado = zumbis[rand.nextInt(10)];
-            pacienteAdicionado.crescer(rand.nextInt(4));
+            Patient pacienteAdicionado = new Patient(dataset);
+            Patient modelo = zumbis[rand.nextInt(10)];
+            pacienteAdicionado.setNome(modelo.getNome());
+            pacienteAdicionado.setCPF(modelo.getCPF());
+            pacienteAdicionado.crescer(modelo.getIdade()-1);
             myList.add(pacienteAdicionado);
             vetorPacientes = myList.toArray(vetorPacientes);
         }
     }
 
     public static void main(String[] args) {
+        //setando o dataset
         IDataSet dataset = new DataSetComponent();
         dataset.setDataSource("roteiros-auxiliares/db/zombie-health-new-cases500.csv");
 
         gerarPacientes(50, 10, dataset);
 
         protocoloUrgencia urg = Factory.criarUrgencia();
-        vetorPacientes = urg.listaAtendimento(vetorPacientes);
 
-        int i = 0;
+        //ordenando o vetor por urgencia
+        vetorPacientes = urg.listaAtendimento(vetorPacientes);
         for (Patient pac : vetorPacientes){
-            System.out.println("Paciente " + i + ": Urgencia = " + pac.getUrgencia() +
+            System.out.println("Paciente " + pac.getNome() + ": Urgencia = " + pac.getUrgencia() +
                                 ", Idade = " + pac.getIdade() + ", Doenca = " +
                                 pac.getGabarito()[pac.getGabarito().length-1]);
-            i++;
         }
 
+        //setando o doutor
         IDoctor doctor = new Doctor();
         doctor.connect(dataset);
         Prontuario prontuario = Factory.criairProntuario();
 
-        for (Patient a: vetorPacientes){
-            prontuario.serializar(a, a.getGabarito()[a.getGabarito().length-1]);
-            doctor.connect(a);
 
-            a.setUrgencia(urg.urgencia(urg.getListaSintomas(a)));
+        //atendimento e serializacao dos pacientes
+        String resposta;
+        int i = 0;
+        for (Patient a: vetorPacientes){
+            doctor.connect(a);
+            resposta = doctor.startInterview();
+            prontuario.serializar(a, resposta);
         }
 
+        //simula um atendimento com o texto
+        Random rand = new Random();
+        Patient a = vetorPacientes[rand.nextInt(vetorPacientes.length)];
 
-        prontuario.serializar(a, a.getGabarito()[a.getGabarito().length-1]);
-        doctor.connect(a);
-
-        a.setUrgencia(urg.urgencia(urg.getListaSintomas(a)));
-        String sintomas = new String();
+        String sintomas = new String("");
         for(String sintoma: urg.getListaSintomas(a)){
             sintomas += sintoma + ", ";
         }
-        String nomeDoenca = doctor.startInterview();
 
         IAnimationC animacao = new AnimationC();
         animacao.setDocName("DrauZiumbi Varella");
-        animacao.setWindowName("Olha que BUNITU!");
+        animacao.setWindowName("Atendimento");
         animacao.setPacientName(a.getNome());
-        String[] falas = new String[]{"", "Oi Doutor DrauZiumbi!", "Como você vai " + a.getNome() + "?", "Vou meio mal, tenho muitos sintomas: *" + sintomas.substring(0, sintomas.length() - 2) + "*", "Tudo bem, a prioridade do seu atendimento será: *" + urg.getStringUrgencia(a) + "*", "No atendimento...", "Então doutor, o que eu tenho?", "Bom " + a.getNome() + " você está com *" + nomeDoenca + "*"};
+        doctor.connect(a);
+        String[] falas = new String[]{"", "Oi Doutor DrauZiumbi!", "Como você vai " + a.getNome() + "?", "Vou meio mal, tenho muitos sintomas: *" + sintomas.substring(0, sintomas.length() - 2) + "*", "Tudo bem, a prioridade do seu atendimento será: *" + urg.getStringUrgencia(a) + "*", "No atendimento...", "Então doutor, o que eu tenho?", "Bom " + a.getNome() + " você está com *" + doctor.startInterview() + "*"};
         String[] personagens = new String[]{"", "pacient", "doctor", "pacient", "doctor", "", "pacient", "doctor"};
         animacao.story(falas, personagens);
 
+
+        //Gera os graficos do nosso vetor
         Grafico grafico1 =  Factory.criarGrafico(vetorPacientes);
         Grafico grafico2 =  Factory.criarGrafico(vetorPacientes);
         //Controi o grafico que vc quiser

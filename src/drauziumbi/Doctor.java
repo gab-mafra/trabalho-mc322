@@ -32,7 +32,6 @@ public class Doctor implements IDoctor {
 
         for (int a = 0; a < attributes.length - 1; a++){
             sintomas[a] = responder.ask(attributes[a]);
-            System.out.println("Question: " + sintomas[a]);
         }
         int i;
         for (i=0; i < instances.length; i++){
