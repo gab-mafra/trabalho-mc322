@@ -1,7 +1,22 @@
 Nome:asdrubal,Idade:1,CPF:111000
-virose,1
-virose,2
-virose,3
-virose,4
-virose,5
-virose,6
+Infecção Viral,1
+Zulombriga,1
+Infecção Viral,2
+Zulombriga,2
+T-Virus,1
+T-Virus,2
+Infecção Viral,3
+Gripe Aviaria,1
+Briga,1
+Infecção Bacteriana,1
+Zulombriga,3
+Infecção Bacteriana,2
+T-Virus,3
+T-Virus,4
+T-Virus,5
+Briga,2
+Infecção Viral,4
+Gripe Aviaria,2
+T-Virus,6
+Gripe Aviaria,3
+Infecção Viral,5

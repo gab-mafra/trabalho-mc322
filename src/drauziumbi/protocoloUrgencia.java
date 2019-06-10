@@ -65,6 +65,24 @@ public class protocoloUrgencia implements IProtocoloUrgencia{
 
     }
 
+    public String getStringUrgencia(Patient paciente){
+        switch (paciente.getUrgencia()){
+            case 0:
+                return "baixa";
+
+            case 1:
+                return "média";
+
+            case 2:
+                return "alta";
+
+            case 3:
+                return "MÁXIMA";
+        }
+
+        return "sei lá bixo";
+    }
+
     public String[] getListaSintomas(Patient paciente){
         ArrayList<String> lista = new ArrayList<String>();
         String[] retorno = new String[0];
