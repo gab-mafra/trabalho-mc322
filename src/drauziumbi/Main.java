@@ -8,13 +8,14 @@ import java.util.Random;
 
 public class Main {
 
-    private static Patient[] vetorPacientes = new Patient[0];
+    private static Patient[] vetorPacientes = new Patient[0]; //instancia o array nulo para depois preenchê-lo
 
     private static Patient[] gerarPacientes(int numeroPacientes, int numeroZumbis, ITableProducer dataset){
         Random rand = new Random();
 
         //Setando os zumbis modelos
-        Patient[] zumbis = new Patient[numeroZumbis];
+        Patient[] zumbis = new Patient[numeroZumbis]; //cria um vetor de pacientes chamado "zumbis"
+        //setando a doença do paciente
         zumbis[0] = new Patient(dataset);
         zumbis[1] = new Patient(dataset);
         zumbis[2] = new Patient(dataset);
@@ -25,6 +26,7 @@ public class Main {
         zumbis[7] = new Patient(dataset);
         zumbis[8] = new Patient(dataset);
         zumbis[9] = new Patient(dataset);
+
         zumbis[0].setNome("Kina");
         zumbis[1].setNome("Genial");
         zumbis[2].setNome("Manu");
@@ -35,6 +37,7 @@ public class Main {
         zumbis[7].setNome("Walker");
         zumbis[8].setNome("Rafa");
         zumbis[9].setNome("Chico");
+
         zumbis[0].setCPF(11);
         zumbis[1].setCPF(132);
         zumbis[2].setCPF(1326);
@@ -52,9 +55,9 @@ public class Main {
 
         //criando o vetor com varios pacientes
         for (int k = 0; k < numeroPacientes; k++){
-            ArrayList<Patient> myList = new ArrayList<>(Arrays.asList(vetorPacientes));
+            ArrayList<Patient> myList = new ArrayList<>(Arrays.asList(vetorPacientes)); //transformando o vetorPacientes num arraylist
             Patient pacienteAdicionado = new Patient(dataset);
-            Patient modelo = zumbis[rand.nextInt(10)];
+            Patient modelo = zumbis[rand.nextInt(10)]; //os zumbis criados acima serão "clonados" aleatóriamente num arraylist
             pacienteAdicionado.setNome(modelo.getNome());
             pacienteAdicionado.setCPF(modelo.getCPF());
             pacienteAdicionado.crescer(modelo.getIdade()-1);
@@ -62,21 +65,22 @@ public class Main {
             vetorPacientes = myList.toArray(vetorPacientes);
         }
 
-        return zumbis;
+        return zumbis; //retorna um vetor de pacientes zumbis
     }
 
     public static void main(String[] args) {
         //setando o dataset
         IDataSet dataset = new DataSetComponent();
-        dataset.setDataSource("roteiros-auxiliares/db/zombie-health-new-cases500.csv");
+        dataset.setDataSource("roteiros-auxiliares/db/zombie-health-new-cases500.csv"); //puxa o arquivo csv que usaremos para realizar as consultas
 
-        Patient[] zumbis = gerarPacientes(50, 10, dataset);
+        Patient[] zumbis = gerarPacientes(700, 10, dataset); //numeroZumbis é a quantidade de modelos de pacientes que teremos, numeroPacientes serão o total de pacientes
 
-        protocoloUrgencia urg = Factory.criarUrgencia();
+        protocoloUrgencia urg = Factory.criarUrgencia(); //chama um protocolo de urgencia que ajudará a classificar a urgencia de atendimento dos pacientes
 
-        //ordenando o vetor por urgencia
+        //ordenando o vetor de pacientes por urgencia dos sintomas apresentados
         vetorPacientes = urg.listaAtendimento(vetorPacientes);
         for (Patient pac : vetorPacientes){
+            //imprime no console o nome do paciente, seguido da sua urgencia de atendimento, idade e doença apresentada
             System.out.println("Paciente " + pac.getNome() + ": Urgencia = " + pac.getUrgencia() +
                                 ", Idade = " + pac.getIdade() + ", Doenca = " +
                                 pac.getGabarito()[pac.getGabarito().length-1]);
@@ -92,8 +96,8 @@ public class Main {
         String resposta;
         for (Patient a: vetorPacientes){
             doctor.connect(a);
-            resposta = doctor.startInterview();
-            prontuario.serializar(a, resposta);
+            resposta = doctor.startInterview(); //começa as perguntas (anamnese)
+            prontuario.serializar(a, resposta); //arquiva os dados do paciente - nome,idade e cpf seguidos das doenças apresentadas e sua recorrência
         }
 
         //simula um atendimento com o texto
@@ -107,7 +111,7 @@ public class Main {
             sintomas += sintoma + ", ";
         }
 
-        //simula o atendimento de fato
+        //simula o atendimento em uma animação
         IAnimationC animacao = new AnimationC();
         animacao.setDocName("DrauZiumbi Varella");
         animacao.setWindowName("Atendimento");
@@ -118,16 +122,16 @@ public class Main {
         animacao.story(falas, personagens);
 
 
-        //Gera os graficos do nosso vetor
+        //Instancia os gráficos a partir do vetor de pacientes
         Grafico grafico1 =  Factory.criarGrafico(vetorPacientes);
         Grafico grafico2 =  Factory.criarGrafico(vetorPacientes);
-        //Controi o grafico que vc quiser
+        //Controi os gráficos de recorrência de doenças e sintomas
         grafico1.contrutorGraficoDoenca();
         grafico2.contrutorGraficoSintoma();
 
         for(Patient paciente: zumbis){
             System.out.println("");
-            prontuario.maisRecorrente(paciente);
+            prontuario.maisRecorrente(paciente); //a partir do prontuário do seu paciente é encontrada a doença mais recorrente ao mesmo
         }
 
     }
