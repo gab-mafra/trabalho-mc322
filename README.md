@@ -7,11 +7,6 @@ de tal forma que o médico, conhecendo as possíveis doenças e seus possíveis 
 
 ## Integrantes do grupo:
 
-#### Parte 1:
-	Gabriel de Souza Mafra                - RA: 197272
-	Manuela Rafael Onofre de Souza        - RA: 202534
-
-#### Parte 2:
 	Gabriel de Souza Mafra                - RA: 197272
 	Manuela Rafael Onofre de Souza        - RA: 202534
 	Victor Toon de Araújo                 - RA: 225231
